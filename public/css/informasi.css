@@ -1,0 +1,674 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #f8fffe 0%, #e8f5f0 100%);
+    min-height: 100vh;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(90deg, #6B9B76, #7BA05B);
+    z-index: 9999;
+    transition: width 0.3s ease;
+}
+
+/* Hero Section - Diperlebar */
+.hero-section {
+    background: linear-gradient(135deg, #6B9B76 0%, #7BA05B 100%);
+    padding: 120px 0 120px;
+    position: relative;
+    overflow: hidden;
+    min-height: 60vh;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+    animation: float 20s infinite linear;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-100px) rotate(360deg); }
+}
+
+.hero-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    animation: slideInUp 1s ease-out;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+    animation: slideInUp 1s ease-out 0.2s both;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Main Content - Diberi jarak lebih dari hero */
+.main-wrapper {
+    max-width: 1200px;
+    margin: 80px auto 0;
+    padding: 0 2rem 3rem;
+    position: relative;
+    z-index: 3;
+}
+
+.content-layout {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.main-content {
+    flex: 1;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+/* Content Sections */
+.content-section {
+    padding: 2rem;
+    border-bottom: 1px solid #f5f5f5;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.content-section.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.content-section:last-child {
+    border-bottom: none;
+}
+
+.content-section h2 {
+    font-size: 1.8rem;
+    color: #6B9B76;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-weight: 600;
+}
+
+.content-section h2 i {
+    background: linear-gradient(135deg, #6B9B76, #7BA05B);
+    color: white;
+    padding: 0.6rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    box-shadow: 0 3px 10px rgba(107, 155, 118, 0.25);
+}
+
+.content-section h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 1.5rem 0 0.8rem;
+    font-weight: 600;
+}
+
+.content-section p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    color: #555;
+}
+
+.content-section ul {
+    list-style: none;
+    margin: 1rem 0;
+}
+
+.content-section li {
+    padding: 0.6rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.content-section li::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: #6B9B76;
+    background: rgba(107, 155, 118, 0.1);
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 0.7rem;
+}
+
+/* Stats Grid - Dipindahkan ke posisi yang benar */
+.stats-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 3rem 0 2rem;
+    justify-content: space-between;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #6B9B76, #7BA05B);
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 8px 25px rgba(107, 155, 118, 0.25);
+    transform: translateY(0);
+    transition: all 0.3s ease;
+    flex: 1;
+    min-width: 140px;
+    max-width: 180px;
+}
+
+.stat-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(107, 155, 118, 0.35);
+}
+
+.stat-number {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.stat-label {
+    font-size: 1rem;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+/* Feature Cards - Lebih kompak */
+.feature-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.feature-card {
+    background: white;
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #f0f0f0;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    min-width: 200px;
+    max-width: 250px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #6B9B76, #7BA05B);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.feature-card:hover::before {
+    left: 0;
+}
+
+.feature-card-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #6B9B76, #7BA05B);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.3rem;
+    color: white;
+    box-shadow: 0 4px 15px rgba(107, 155, 118, 0.25);
+}
+
+.feature-card h4 {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.feature-card p {
+    color: #666;
+    line-height: 1.5;
+    font-size: 0.9rem;
+}
+
+/* Alert - Lebih kompak */
+.alert {
+    background: linear-gradient(135deg, rgba(107, 155, 118, 0.1), rgba(123, 160, 91, 0.1));
+    border: 1px solid rgba(107, 155, 118, 0.3);
+    border-radius: 10px;
+    padding: 1.2rem;
+    margin: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.alert-icon {
+    font-size: 1.3rem;
+    color: #6B9B76;
+    background: white;
+    padding: 0.7rem;
+    border-radius: 50%;
+    box-shadow: 0 3px 10px rgba(107, 155, 118, 0.2);
+}
+
+.alert div strong {
+    color: #6B9B76;
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+/* FAQ - Lebih kompak */
+.faq-item {
+    background: white;
+    border: 1px solid #f0f0f0;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+}
+
+.faq-question {
+    padding: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(107, 155, 118, 0.05), rgba(123, 160, 91, 0.05));
+    font-weight: 600;
+    font-size: 1rem;
+    color: #333;
+}
+
+.faq-icon {
+    background: #6B9B76;
+    color: white;
+    padding: 0.4rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 1.2rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 150px;
+    padding: 0 1.2rem 1.2rem;
+}
+
+/* Sidebar - Lebih kecil */
+.sidebar {
+    width: 280px;
+    position: sticky;
+    top: 135px;
+    height: fit-content;
+}
+
+.toc-widget {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f0f0f0;
+}
+
+.toc-title {
+    font-size: 1.2rem;
+    color: #6B9B76;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 600;
+}
+
+.toc-list {
+    list-style: none;
+}
+
+.toc-list li {
+    margin-bottom: 0.5rem;
+}
+
+.toc-link {
+    display: block;
+    padding: 0.7rem 1rem;
+    text-decoration: none;
+    color: #666;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    font-size: 0.9rem;
+}
+
+.toc-link:hover, .toc-link.active {
+    background: linear-gradient(135deg, #6B9B76, #7BA05B);
+    color: white;
+    transform: translateX(3px);
+}
+
+/* Footer CTA - Lebih kompak */
+.footer-cta {
+    background: linear-gradient(135deg, #6B9B76, #7BA05B);
+    padding: 3rem 0;
+    text-align: center;
+    color: white;
+    margin-top: 3rem;
+}
+
+.footer-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+}
+
+.footer-cta p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: white;
+    color: #6B9B76;
+    padding: 1rem 2rem;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #6B9B76, #7BA05B);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 
+        0 8px 25px rgba(107, 155, 118, 0.3),
+        0 0 0 2px rgba(255, 255, 255, 0.693),
+        0 0 15px rgba(255, 255, 255, 0.516);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 
+        0 12px 30px rgba(107, 155, 118, 0.4),
+        0 0 0 3px rgba(255, 255, 255, 0.5),
+        0 0 25px rgba(255, 255, 255, 0.4),
+        0 0 35px rgba(255, 255, 255, 0.2);
+}
+
+/* Variasi 2: Menggunakan border untuk efek lebih tegas */
+.back-to-top.variant-border {
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 
+        0 8px 25px rgba(107, 155, 118, 0.3),
+        0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.back-to-top.variant-border:hover {
+    border: 3px solid rgba(255, 255, 255, 0.6);
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 
+        0 12px 30px rgba(107, 155, 118, 0.4),
+        0 0 30px rgba(255, 255, 255, 0.5);
+}
+
+/* Variasi 3: Efek glow yang berkedip */
+.back-to-top.variant-pulse {
+    box-shadow: 
+        0 8px 25px rgba(107, 155, 118, 0.3),
+        0 0 0 0 rgba(255, 255, 255, 0.4);
+    animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 
+            0 8px 25px rgba(107, 155, 118, 0.3),
+            0 0 0 0 rgba(255, 255, 255, 0.4),
+            0 0 0 0 rgba(255, 255, 255, 0.2);
+    }
+    50% {
+        box-shadow: 
+            0 8px 25px rgba(107, 155, 118, 0.3),
+            0 0 0 5px rgba(255, 255, 255, 0.2),
+            0 0 0 15px rgba(255, 255, 255, 0.1);
+    }
+    100% {
+        box-shadow: 
+            0 8px 25px rgba(107, 155, 118, 0.3),
+            0 0 0 0 rgba(255, 255, 255, 0.4),
+            0 0 0 0 rgba(255, 255, 255, 0.2);
+    }
+}
+
+.back-to-top.variant-pulse:hover {
+    animation: none;
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 
+        0 12px 30px rgba(107, 155, 118, 0.4),
+        0 0 0 3px rgba(255, 255, 255, 0.5),
+        0 0 25px rgba(255, 255, 255, 0.4);
+}
+
+/* Numbered Steps - Menggunakan nomor saja */
+.numbered-step {
+    counter-increment: step-counter;
+    margin: 1.5rem 0;
+    position: relative;
+    padding-left: 3rem;
+}
+
+.numbered-step::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(135deg, #6B9B76, #7BA05B);
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 3px 10px rgba(107, 155, 118, 0.3);
+}
+
+.numbered-section {
+    counter-reset: step-counter;
+}
+
+.numbered-step h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Responsive - Perbaikan untuk mobile */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 0 80px;
+        min-height: 50vh;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .main-wrapper {
+        margin: 40px auto 0;
+    }
+
+    .content-layout {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .sidebar {
+        width: 100%;
+        position: relative;
+        top: 0;
+        order: -1;
+    }
+
+    .main-content {
+        order: 0;
+    }
+
+    .content-section {
+        padding: 1.5rem;
+    }
+
+    .stats-grid {
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .stat-card {
+        min-width: 120px;
+        max-width: 150px;
+        padding: 1.5rem 1rem;
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+    }
+
+    .feature-cards {
+        flex-direction: column;
+    }
+
+    .feature-card {
+        min-width: auto;
+        max-width: none;
+    }
+
+    .back-to-top {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}

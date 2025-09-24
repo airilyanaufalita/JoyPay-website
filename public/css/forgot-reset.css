@@ -1,0 +1,268 @@
+/* Reset dan base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+     background: linear-gradient(135deg, #6B9B76, #6B9B76);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Container utama */
+.forgot-password-form,
+.reset-password-form {
+    display: flex;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px 10px rgba(0, 0, 0, 0.2); 
+    overflow: hidden;
+    max-width: 1000px;
+    width: 100%;
+    min-height: 500px;
+}
+
+/* Panel kiri dengan informasi */
+.left-panel {
+    flex: 1;
+     background: linear-gradient(135deg, #6B9B76, #6B9B76);
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.brand-content h1 {
+    font-size: 48px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.brand-content p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 60px;
+    line-height: 1.5;
+}
+
+.features {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.feature-item svg {
+    flex-shrink: 0;
+}
+
+/* Panel kanan dengan form */
+.form-panel {
+    flex: 1;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 450px;
+}
+
+/* Header */
+.form-panel h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+/* Input groups */
+.input-group {
+    margin-bottom: 24px;
+}
+
+/* Labels */
+.input-group label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Input fields */
+.input-group input[type="text"],
+.input-group input[type="email"],
+.input-group input[type="password"] {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #e5e5e5;
+    border-radius: 12px;
+    font-size: 16px;
+    background: #fafafa;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #7fb069;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(127, 176, 105, 0.1);
+}
+
+.input-group input::placeholder {
+    color: #999;
+    font-size: 14px;
+}
+
+/* Submit buttons */
+.submit-btn {
+    background: #6B9B76;
+    color: white;
+    border: none;
+    padding: 18px 24px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+    text-transform: none;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    color: #4a7754;
+    box-shadow: 0 8px 20px rgba(127, 176, 105, 0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(127, 176, 105, 0.2);
+}
+
+/* Alert messages */
+.alert {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.alert-error {
+    background: #fee;
+    color: #c53030;
+    border: 1px solid #fed7d7;
+}
+
+.alert-success {
+    background: #f0fff4;
+    color: #38a169;
+    border: 1px solid #c6f6d5;
+}
+
+/* Back link */
+.back-link {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.back-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #7fb069;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.back-link a:hover {
+    color: #689554;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .forgot-password-form,
+    .reset-password-form {
+        flex-direction: column;
+        max-width: 400px;
+        margin: 20px;
+    }
+    
+    .left-panel {
+        min-height: 200px;
+        padding: 40px 30px;
+        text-align: center;
+    }
+    
+    .brand-content h1 {
+        font-size: 36px;
+        margin-bottom: 12px;
+    }
+    
+    .brand-content p {
+        font-size: 14px;
+        margin-bottom: 30px;
+    }
+    
+    .features {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+    
+    .feature-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+    
+    .feature-item span {
+        font-size: 12px;
+    }
+    
+    .form-panel {
+        padding: 40px 30px;
+        max-width: none;
+    }
+    
+    .form-panel h2 {
+        font-size: 28px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+}
+
+/* Hidden input styling */
+input[type="hidden"] {
+    display: none;
+}
+
+/* Improved focus states */
+.input-group input:focus-visible {
+    outline: 2px solid #7fb069;
+    outline-offset: 2px;
+}
